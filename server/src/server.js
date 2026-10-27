@@ -1,4 +1,7 @@
+const cors = require("cors");
+
 const express = require("express");
+
 const cors = require("cors");
 
 const app = express();
@@ -11,6 +14,14 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+app.use(cors({
+    origin: [
+        "https://bce98596.smartats.pages.dev"
+    ],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 
 const PORT = process.env.PORT || 5000;
 
