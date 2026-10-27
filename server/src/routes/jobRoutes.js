@@ -8,8 +8,6 @@ const authenticateToken = require("../middleware/authMiddleware");
 
 const authorizeRole = require("../middleware/authorizeRole");
 
-const create = require("prompt-sync");
-
 router.get("/", getJobs);
 router.get(
     "/my-jobs",
