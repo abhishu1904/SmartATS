@@ -4,12 +4,15 @@ const cors = require("cors");
 const app = express();
 
 app.use(cors({
-    origin: "http://localhost:5173"
+    origin: [
+        "http://localhost:5173",
+        "http://127.0.0.1:5173"
+    ]
 }));
 
 app.use(express.json());
 
-const port = 5000;
+const PORT = process.env.PORT || 5000;
 
 const jobRoutes = require("./routes/jobRoutes");
 const authRoutes = require("./routes/authRoutes");
@@ -31,6 +34,6 @@ app.get("/", (req, res) => {
     res.send("Smart Requirement & ATS backend is running!");
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`SmartATS server is running on port ${PORT}`);
 });

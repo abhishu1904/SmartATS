@@ -29,3 +29,5 @@ uploads/
 # OS files
 .DS_Store
 Thumbs.db
+# Aiven SSL certificate
+server/ca.pem
