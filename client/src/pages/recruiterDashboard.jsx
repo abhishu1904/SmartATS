@@ -12,7 +12,7 @@ import {
     faTrash
 } from '@fortawesome/free-solid-svg-icons';
 
-import './RecruiterDashboard.css';
+import "./recruiterDashboard.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
