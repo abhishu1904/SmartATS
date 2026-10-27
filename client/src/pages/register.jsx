@@ -4,7 +4,7 @@ import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate, Link } from "react-router-dom";
 import "./register.css"
 
-const API_URL = 'http://localhost:5000/api/auth';
+const API_URL = `${import.meta.env.VITE_API_URL}/api/auth`;
 
 function Register() {
     const navigate = useNavigate();

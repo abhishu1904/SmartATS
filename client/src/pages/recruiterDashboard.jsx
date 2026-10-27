@@ -14,6 +14,8 @@ import {
 
 import './RecruiterDashboard.css';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function RecruiterDashboard() {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
@@ -96,7 +98,7 @@ function RecruiterDashboard() {
 
         try {
             const response = await fetch(
-                'http://localhost:5000/api/jobs/my-jobs',
+                `${API_URL}/api/jobs/my-jobs`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -137,7 +139,7 @@ function RecruiterDashboard() {
 
         try {
             const response = await fetch(
-                'http://localhost:5000/api/recruiter/dashboard',
+                `${API_URL}/api/recruiter/dashboard`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -175,7 +177,7 @@ function RecruiterDashboard() {
 
         try {
             const response = await fetch(
-                'http://localhost:5000/api/recruiter/recent-applications',
+                `${API_URL}/api/recruiter/recent-applications`,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -230,7 +232,7 @@ function RecruiterDashboard() {
         try {
             const isEditing = Boolean(editingJob);
             const url = isEditing ?
-                `http://localhost:5000/api/jobs/${editingJob.id}` : `http://localhost:5000/api/jobs`;
+                `${API_URL}/api/jobs/${editingJob.id}` : `${API_URL}/api/jobs`;
 
             const response = await fetch(url, {
                 method: isEditing ? 'PUT' : 'POST',
@@ -292,7 +294,7 @@ function RecruiterDashboard() {
             const token = localStorage.getItem('smartats_token');
 
             const response = await fetch(
-                `http://localhost:5000/api/jobs/${job.id}`,
+                `${API_URL}/api/jobs/${job.id}`,
                 {
                     method: 'DELETE',
                     headers: {

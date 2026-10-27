@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import "./applicationDetails.css";
 
-const API_URL = "http://localhost:5000/api/applications";
+const API_URL = `${import.meta.env.VITE_API_URL}/api/applications`;
 
 function ApplicationDetails() {
     const { applicationId } = useParams();
@@ -276,7 +276,7 @@ function ApplicationDetails() {
                     {application.resume_url ? (
                         <a
                             className="application-resume-button"
-                            href={`http://localhost:5000${application.resume_url}`}
+                            href={`${import.meta.env.VITE_API_URL}${application.resume_url}`}
                             target="_blank"
                             rel="noreferrer"
                         >
