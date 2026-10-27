@@ -11,12 +11,15 @@ const db = mysql.createPool({
     database: process.env.DB_NAME || "ats_db",
     port: Number(process.env.DB_PORT) || 3306,
 
+
     ssl: process.env.DB_SSL === "true"
         ? {
-            ca: require("fs").readFileSync(
-                require("path").resolve(__dirname, "../../ca.pem"),
-                "utf8"
-            ),
+            ca: process.env.DB_SSL_CA
+                ? process.env.DB_SSL_CA.replace(/\\n/g, "\n")
+                : require("fs").readFileSync(
+                    require("path").resolve(__dirname, "../../ca.pem"),
+                    "utf8"
+                ),
             rejectUnauthorized: true
         }
         : undefined,
@@ -24,6 +27,7 @@ const db = mysql.createPool({
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
+
 });
 
 db.getConnection((err, connection) => {
@@ -31,6 +35,7 @@ db.getConnection((err, connection) => {
         console.error("MySQL connection failed:", err.message);
         return;
     }
+
 
     console.log("MySQL database connected successfully!");
     connection.release();
