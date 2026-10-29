@@ -26,6 +26,7 @@ function CandidateDashboard() {
     const [jobTypeFilter, setJobTypeFilter] = useState('');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const [sidebarOpen, setSidebarOpen] = useState(false);
     const [selectedJob, setSelectedJob] = useState(null);
     const [applying, setApplying] = useState(false);
     const [applicationMessage, setApplicationMessage] = useState('');
@@ -201,37 +202,77 @@ function CandidateDashboard() {
 
     return (
         <main className="candidate-dashboard">
-            <aside className="dashboard-sidebar">
+            <button
+                className="mobile-sidebar-toggle"
+                type="button"
+                onClick={() => setSidebarOpen(!sidebarOpen)}
+                aria-label={sidebarOpen ? "Close sidebar" : "Open sidebar"}
+            >
+                {sidebarOpen ? "✕" : "☰"}
+            </button>
+            {sidebarOpen && (
+                <div
+                    className="sidebar-overlay"
+                    onClick={() => setSidebarOpen(false)}
+                />
+            )}
+
+            <aside
+                className={`dashboard-sidebar ${sidebarOpen ? "sidebar-open" : ""}`}
+            >
                 <div className="dashboard-brand">
                     <div className="dashboard-brand-icon">
                         <FontAwesomeIcon icon={faUserTie} />
                     </div>
                     <span>SmartATS</span>
                 </div>
+
                 <div className="sidebar-label">
                     WORKSPACE
                 </div>
-                <button className="sidebar-link active" type="button">
+
+                <button
+                    className="sidebar-link active"
+                    type="button"
+                    onClick={() => setSidebarOpen(false)}
+                >
                     <FontAwesomeIcon icon={faBriefcase} />
                     Dashboard
                 </button>
-                <button className="sidebar-link" type="button" onClick={() =>
-                    document.getElementById('available-jobs')?.scrollIntoView({ behavior: 'smooth' })
-                }>
+
+                <button
+                    className="sidebar-link"
+                    type="button"
+                    onClick={() => {
+                        setSidebarOpen(false);
+                        setTimeout(() => {
+                            document
+                                .getElementById("available-jobs")
+                                ?.scrollIntoView({ behavior: "smooth" });
+                        }, 200);
+                    }}
+                >
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                     Find Jobs
                 </button>
+
                 <div className="sidebar-bottom">
                     <div className="sidebar-user">
                         <div className="user-avatar">
-                            {user.name?.charAt(0).toUpperCase() || 'C'}
+                            {user.name?.charAt(0).toUpperCase() || "C"}
                         </div>
+
                         <div className="sidebar-user-info">
                             <strong>{user.name}</strong>
                             <span>Candidate</span>
                         </div>
                     </div>
-                    <button className="logout-button" type="button" onClick={handleLogout}>
+
+                    <button
+                        className="logout-button"
+                        type="button"
+                        onClick={handleLogout}
+                    >
                         <FontAwesomeIcon icon={faArrowRightFromBracket} />
                         Logout
                     </button>
