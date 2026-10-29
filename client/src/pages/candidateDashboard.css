@@ -166,47 +166,59 @@
 }
 
 /* Mobile Responsive Sidebar */
+/* Hide the hamburger + overlay everywhere */
+.mobile-sidebar-toggle,
+.sidebar-overlay,
+.recruiter-dashboard .mobile-sidebar-toggle {
+    display: none !important;
+}
+
 @media (max-width: 768px) {
-    .recruiter-dashboard .mobile-sidebar-toggle {
-        display: flex;
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        z-index: 1002;
-        width: 42px;
-        height: 42px;
-        align-items: center;
-        justify-content: center;
-        border: none;
-        border-radius: 10px;
-        background: #7960ff;
-        color: #fff;
-        font-size: 23px;
-        cursor: pointer;
+
+    .candidate-dashboard,
+    .recruiter-dashboard {
+        flex-direction: column;
     }
 
+    .dashboard-sidebar,
     .recruiter-dashboard .dashboard-sidebar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        width: 255px;
-        height: 100dvh;
-        z-index: 1001;
-        overflow-y: auto;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease;
+        position: static;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        transform: none;
+        padding: 18px 20px;
     }
 
-    .recruiter-dashboard .dashboard-sidebar.sidebar-open {
-        transform: translateX(0);
+    .dashboard-brand {
+        margin-bottom: 20px;
     }
 
-    .recruiter-dashboard .sidebar-overlay {
-        position: fixed;
-        inset: 0;
-        z-index: 1000;
-        background: rgba(15, 15, 40, 0.5);
+    .sidebar-label {
+        display: none;
+    }
+
+    .sidebar-link {
+        margin-bottom: 4px;
+    }
+
+    /* user info + logout side by side, like the candidate screen */
+    .sidebar-bottom {
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .sidebar-user {
+        border-top: 0;
+        padding: 0;
+    }
+
+    .logout-button {
+        width: auto;
+        padding: 13px 18px;
     }
 }
 
