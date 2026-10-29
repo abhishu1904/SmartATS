@@ -1,25 +1,31 @@
 const express = require("express");
-
 const cors = require("cors");
 
 const app = express();
 
-app.use(cors({
-    origin: [
-        "http://localhost:5173",
-        "http://127.0.0.1:5173"
-    ]
-}));
-
-app.use(express.json());
+const allowedOrigins = [
+    "https://smartats.pages.dev",      // production
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
+];
 
 app.use(cors({
-    origin: [
-        "https://bce98596.smartats.pages.dev"
-    ],
+    origin: (origin, callback) => {
+        // allow requests with no origin (curl, mobile apps) and matching ones
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        // allow any Cloudflare Pages preview deployment too
+        if (/^https:\/\/[a-z0-9]+\.smartats\.pages\.dev$/.test(origin)) {
+            return callback(null, true);
+        }
+        return callback(new Error("Not allowed by CORS"));
+    },
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+app.use(express.json());
 
 const PORT = process.env.PORT || 5000;
 
