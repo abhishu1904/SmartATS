@@ -423,85 +423,7 @@
 
 /* Responsive layout */
 
-@media (max-width: 1100px) {
-    .recruiter-main {
-        padding: 28px 25px 35px;
-    }
 
-    .recruiter-stats {
-        grid-template-columns: 1fr;
-        gap: 14px;
-    }
-
-    .recruiter-stat-card {
-        padding: 19px;
-    }
-}
-
-@media (max-width: 700px) {
-    .recruiter-sidebar {
-        width: 76px;
-        padding: 22px 10px;
-        align-items: center;
-    }
-
-    .recruiter-brand {
-        justify-content: center;
-        margin-bottom: 42px;
-        padding: 0;
-    }
-
-    .recruiter-brand>span,
-    .recruiter-sidebar-label,
-    .recruiter-sidebar-link:not(.active),
-    .recruiter-sidebar-link.active,
-    .recruiter-user>div:last-child,
-    .recruiter-logout {
-        font-size: 0;
-    }
-
-    .recruiter-sidebar-link {
-        justify-content: center;
-        padding: 14px 0;
-    }
-
-    .recruiter-sidebar-bottom {
-        width: 100%;
-    }
-
-    .recruiter-user {
-        justify-content: center;
-        padding: 0;
-    }
-
-    .recruiter-main {
-        margin-left: 76px;
-        padding: 22px 14px 30px;
-    }
-
-    .recruiter-topbar {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .recruiter-topbar h1 {
-        font-size: 26px;
-    }
-
-    .recruiter-welcome {
-        padding: 27px 22px;
-        border-radius: 18px;
-    }
-
-    .recruiter-welcome h2 {
-        font-size: 24px;
-    }
-
-    .recruiter-jobs-section {
-        padding: 23px 19px;
-    }
-}
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1500,5 +1422,85 @@
     .recruiter-applicant-search {
         width: 100%;
         min-width: 0;
+    }
+}
+
+@media (max-width: 1100px) {
+    .recruiter-main {
+        padding: 28px 25px 35px;
+    }
+
+    .recruiter-stats {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .recruiter-stat-card {
+        padding: 19px;
+    }
+}
+
+@media (max-width: 700px) {
+    .recruiter-sidebar {
+        width: 76px;
+        padding: 22px 10px;
+        align-items: center;
+    }
+
+    .recruiter-brand {
+        justify-content: center;
+        margin-bottom: 42px;
+        padding: 0;
+    }
+
+    .recruiter-brand>span,
+    .recruiter-sidebar-label,
+    .recruiter-sidebar-link:not(.active),
+    .recruiter-sidebar-link.active,
+    .recruiter-user>div:last-child,
+    .recruiter-logout {
+        font-size: 0;
+    }
+
+    .recruiter-sidebar-link {
+        justify-content: center;
+        padding: 14px 0;
+    }
+
+    .recruiter-sidebar-bottom {
+        width: 100%;
+    }
+
+    .recruiter-user {
+        justify-content: center;
+        padding: 0;
+    }
+
+    .recruiter-main {
+        margin-left: 76px;
+        padding: 22px 14px 30px;
+    }
+
+    .recruiter-topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .recruiter-topbar h1 {
+        font-size: 26px;
+    }
+
+    .recruiter-welcome {
+        padding: 27px 22px;
+        border-radius: 18px;
+    }
+
+    .recruiter-welcome h2 {
+        font-size: 24px;
+    }
+
+    .recruiter-jobs-section {
+        padding: 23px 19px;
     }
 }
